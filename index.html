@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Projects</title>
+    <title>Gaurav Amarnani | Engineering Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
         :root {
-            /* Theme: Midnight Aurora */
             --bg-main: #0B0F19;
             --bg-nav: rgba(11, 15, 25, 0.8);
             --card-base: rgba(30, 41, 59, 0.5);
             --card-border-static: rgba(148, 163, 184, 0.2);
             --card-inner: #0f172a;
-            
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            
-            /* Extremely Vibrant Hover Colors */
             --vibrant-cyan: #00E5FF;
             --vibrant-violet: #B000FF;
-            
             --border-radius: 16px;
         }
 
@@ -29,6 +24,11 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html, body {
+            overflow-x: hidden; /* Hard fix for horizontal scrolling */
+            width: 100%;
         }
 
         body {
@@ -71,132 +71,40 @@
             transition: all 0.3s ease;
         }
 
-        .nav-logo .bracket {
-            color: var(--vibrant-cyan);
-            font-weight: 400;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
+        .nav-logo .bracket { color: var(--vibrant-cyan); font-weight: 400; opacity: 0.8; transition: all 0.3s ease; }
+        .nav-logo:hover { text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); }
+        .nav-logo:hover .bracket { opacity: 1; text-shadow: 0 0 15px rgba(0, 229, 255, 0.8); }
 
-        .nav-logo:hover {
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-        }
+        .nav-links { display: flex; align-items: center; gap: 2rem; height: 100%; }
 
-        .nav-logo:hover .bracket {
-            opacity: 1;
-            text-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
-        }
+        .nav-link { color: var(--text-muted); font-weight: 500; font-size: 0.95rem; background: none; border: none; cursor: pointer; transition: color 0.2s ease; }
+        .nav-link:hover { color: var(--vibrant-cyan); }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            height: 100%;
-        }
-
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        .nav-link:hover {
-            color: var(--vibrant-cyan);
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-
+        .dropdown { position: relative; height: 100%; display: flex; align-items: center; }
         .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--card-inner);
-            min-width: 280px;
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid var(--card-border-static);
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-            z-index: 1000;
-            padding: 0.5rem;
+            display: none; position: absolute; top: 70px; left: 50%; transform: translateX(-50%);
+            background: var(--card-inner); min-width: 280px; max-height: 400px; overflow-y: auto;
+            border: 1px solid var(--card-border-static); border-radius: 0 0 12px 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6); z-index: 1000; padding: 0.5rem;
             animation: fadeIn 0.2s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-50%) translateY(-10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-item {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--vibrant-cyan);
-            padding-left: 1.25rem;
-        }
-
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-item { display: block; padding: 0.75rem 1rem; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; border-radius: 6px; transition: all 0.2s ease; }
+        .dropdown-item:hover { background: rgba(255, 255, 255, 0.05); color: var(--vibrant-cyan); padding-left: 1.25rem; }
         .dropdown-content::-webkit-scrollbar { width: 6px; }
-        .dropdown-content::-webkit-scrollbar-track { background: transparent; }
         .dropdown-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
-        .social-links {
-            display: flex;
-            gap: 1.25rem;
-            align-items: center;
-        }
+        .social-links { display: flex; gap: 1.25rem; align-items: center; }
+        .social-links a { color: var(--text-muted); transition: all 0.2s ease; display: flex; }
+        .social-links a:hover { color: var(--vibrant-violet); transform: translateY(-2px) scale(1.1); }
+        .social-links svg { width: 26px; height: 26px; fill: currentColor; }
 
-        .social-links a {
-            color: var(--text-muted);
-            transition: color 0.2s ease, transform 0.2s ease;
-            display: flex;
-        }
+        /* --- Header --- */
+        header { max-width: 1000px; margin: 4rem auto 1rem auto; text-align: center; padding: 0 1.5rem; }
 
-        .social-links a:hover {
-            color: var(--vibrant-violet);
-            transform: translateY(-2px) scale(1.1);
-        }
-
-        .social-links svg {
-            width: 26px;
-            height: 26px;
-            fill: currentColor;
-        }
-
-        /* --- Header / Title --- */
-        header {
-            max-width: 1000px;
-            margin: 4rem auto 3rem auto;
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        /* Seamless Text Spotlight Effect */
         h1.header-title {
             font-size: 3.5rem;
             font-weight: 800;
@@ -206,251 +114,112 @@
             -webkit-background-clip: text;
             background-clip: text;
             position: relative;
-            display: inline-block; /* Required for precise mouse tracking on the text */
+            display: inline-block;
         }
 
         h1.header-title::after {
-            content: attr(data-text); /* Pulls text from HTML attribute to match exactly */
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            color: transparent;
-            /* The moving spotlight gradient */
-            background: radial-gradient(
-                200px circle at var(--mouse-x) var(--mouse-y), 
-                var(--vibrant-cyan) 0%, 
-                var(--vibrant-violet) 40%, 
-                transparent 80%
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none; /* Allows mouse events to pass through */
+            content: attr(data-text); position: absolute; left: 0; top: 0; width: 100%; height: 100%; color: transparent;
+            background: radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), var(--vibrant-cyan) 0%, var(--vibrant-violet) 40%, transparent 80%);
+            -webkit-background-clip: text; background-clip: text; opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
         }
 
-        h1.header-title:hover::after {
-            opacity: 1; /* Fade in the spotlight when hovering over text */
-        }
+        h1.header-title:hover::after { opacity: 1; }
 
-        header p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            margin-top: 1rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        header p { color: var(--text-muted); font-size: 1.15rem; margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-        /* --- Portfolio Grid --- */
+        /* --- Categories --- */
+        .categories-wrapper { text-align: center; margin: 3rem auto 4rem auto; max-width: 1200px; padding: 0 1.5rem; }
+        .categories-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--vibrant-cyan); margin-bottom: 1.5rem; font-weight: 600; opacity: 0.8; }
+        .categories-container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+        .category-pill {
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem;
+            background: var(--card-base); border: 1px solid var(--card-border-static); border-radius: 999px;
+            color: var(--text-main); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: all 0.3s ease;
+        }
+        .category-pill::after { content: '→'; font-family: monospace; opacity: 0.5; transition: all 0.3s ease; }
+        .category-pill:hover { background: rgba(0, 229, 255, 0.05); color: var(--vibrant-cyan); border-color: rgba(0, 229, 255, 0.4); box-shadow: 0 0 20px rgba(0, 229, 255, 0.15); transform: translateY(-2px); }
+        .category-pill:hover::after { transform: translateX(4px); opacity: 1; }
+
+        .projects-header { text-align: center; font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 2rem; letter-spacing: -0.02em; }
+
+        /* --- Grid (Fixed for responsive scaling) --- */
         #portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            /* min() prevents the 340px minimum from forcing horizontal scroll on smaller laptops/tablets */
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
             gap: 2rem;
             max-width: 1400px;
+            width: 100%;
             margin: 0 auto 6rem auto;
             padding: 0 2rem;
             flex-grow: 1;
         }
 
-        .card-wrapper {
-            background: var(--card-border-static);
-            border-radius: var(--border-radius);
-            position: relative;
-            padding: 1px;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            text-decoration: none;
+        .card-wrapper { background: var(--card-border-static); border-radius: var(--border-radius); position: relative; padding: 1px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; cursor: pointer; text-decoration: none; }
+        .card-wrapper:hover { transform: translateY(-6px); z-index: 10; }
+        .card-wrapper::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: inherit; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), var(--vibrant-cyan), var(--vibrant-violet) 50%, transparent 70%); opacity: 0; transition: opacity 0.5s ease; z-index: 1; }
+        .card-wrapper:hover::before { opacity: 1; }
+
+        .card-content { background: var(--card-inner); border-radius: calc(var(--border-radius) - 1px); position: relative; z-index: 2; padding: 2rem; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+        .card-inner-glow { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(0, 229, 255, 0.08), transparent 60%); opacity: 0; transition: opacity 0.5s ease; z-index: 3; pointer-events: none; }
+        .card-wrapper:hover .card-inner-glow { opacity: 1; }
+        .card-content-layer { position: relative; z-index: 4; display: flex; flex-direction: column; height: 100%; }
+
+        .card-title { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; line-height: 1.3; }
+        .card-tagline { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; flex-grow: 1; }
+
+        .headline-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+        .badge { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); color: #cbd5e1; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; transition: all 0.2s ease; position: relative; }
+        .card-wrapper:hover .badge { border-color: rgba(0, 229, 255, 0.3); color: #fff; background: rgba(0, 229, 255, 0.05); }
+        .badge:hover { background: rgba(0, 229, 255, 0.5) !important; color: #fff !important; border-color: var(--vibrant-cyan) !important; box-shadow: 0 0 12px rgba(0, 229, 255, 0.4), 0 0 25px rgba(0, 229, 255, 0.2) !important; transform: translateY(-2px); z-index: 5; }
+
+        .card-actions { display: flex; gap: 1rem; margin-top: auto; position: relative; z-index: 5; }
+        .btn { flex: 1; text-align: center; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+        .btn-primary { background: rgba(0, 229, 255, 0.1); color: var(--vibrant-cyan); border: 1px solid rgba(0, 229, 255, 0.3); }
+        .btn-primary:hover { background: var(--vibrant-cyan); color: #000; border-color: var(--vibrant-cyan); box-shadow: 0 0 25px rgba(0, 229, 255, 0.8), 0 0 50px rgba(0, 229, 255, 0.4); transform: scale(1.05); }
+        .btn-secondary { background: rgba(176, 0, 255, 0.1); color: #d8b4fe; border: 1px solid rgba(176, 0, 255, 0.3); }
+        .btn-secondary:hover { background: var(--vibrant-violet); color: #fff; border-color: var(--vibrant-violet); box-shadow: 0 0 25px rgba(176, 0, 255, 0.8), 0 0 50px rgba(176, 0, 255, 0.4); transform: scale(1.05); }
+
+        footer { border-top: 1px solid var(--card-border-static); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; background: var(--bg-nav); margin-top: auto; }
+
+        /* --- Full Responsiveness Media Queries --- */
+        
+        /* Tablets & iPads */
+        @media (max-width: 1024px) {
+            h1.header-title { font-size: 3rem; }
+            #portfolio-grid { gap: 1.5rem; padding: 0 1.5rem; }
+            .card-content { padding: 1.5rem; }
         }
 
-        .card-wrapper:hover {
-            transform: translateY(-6px);
-            z-index: 10;
-        }
-
-        .card-wrapper::before {
-            content: "";
-            position: absolute;
-            left: 0; top: 0; width: 100%; height: 100%;
-            border-radius: inherit;
-            background: radial-gradient(
-                600px circle at var(--mouse-x) var(--mouse-y), 
-                var(--vibrant-cyan), 
-                var(--vibrant-violet) 50%,
-                transparent 70%
-            );
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 1;
-        }
-
-        .card-wrapper:hover::before {
-            opacity: 1;
-        }
-
-        .card-content {
-            background: var(--card-inner);
-            border-radius: calc(var(--border-radius) - 1px);
-            position: relative;
-            z-index: 2;
-            padding: 2rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .card-inner-glow {
-            position: absolute;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background: radial-gradient(
-                400px circle at var(--mouse-x) var(--mouse-y), 
-                rgba(0, 229, 255, 0.08),
-                transparent 60%
-            );
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        .card-wrapper:hover .card-inner-glow {
-            opacity: 1;
-        }
-
-        .card-content-layer {
-            position: relative;
-            z-index: 4;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
-        }
-
-        .card-tagline {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .headline-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Base Badge Style */
-        .badge {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #cbd5e1;
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .card-wrapper:hover .badge {
-            border-color: rgba(0, 229, 255, 0.3);
-            color: #fff;
-            background: rgba(0, 229, 255, 0.05);
-        }
-
-        /* 2nd Level: Skill Badge Hover (Exactly 50% brightness of buttons) */
-        .badge:hover {
-            background: rgba(0, 229, 255, 0.5) !important; /* 50% opacity background instead of solid */
-            color: #fff !important;
-            border-color: var(--vibrant-cyan) !important;
-            /* Box shadow is mathematically 50% of the button hover values */
-            box-shadow: 0 0 12px rgba(0, 229, 255, 0.4), 0 0 25px rgba(0, 229, 255, 0.2) !important;
-            transform: translateY(-2px);
-            z-index: 5;
-        }
-
-        /* --- Buttons --- */
-        .card-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-            position: relative;
-            z-index: 5;
-        }
-
-        .btn {
-            flex: 1;
-            text-align: center;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: rgba(0, 229, 255, 0.1);
-            color: var(--vibrant-cyan);
-            border: 1px solid rgba(0, 229, 255, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: var(--vibrant-cyan);
-            color: #000;
-            border-color: var(--vibrant-cyan);
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.8), 0 0 50px rgba(0, 229, 255, 0.4);
-            transform: scale(1.05);
-        }
-
-        .btn-secondary {
-            background: rgba(176, 0, 255, 0.1);
-            color: #d8b4fe;
-            border: 1px solid rgba(176, 0, 255, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: var(--vibrant-violet);
-            color: #fff;
-            border-color: var(--vibrant-violet);
-            box-shadow: 0 0 25px rgba(176, 0, 255, 0.8), 0 0 50px rgba(176, 0, 255, 0.4);
-            transform: scale(1.05);
-        }
-
-        /* --- Footer --- */
-        footer {
-            border-top: 1px solid var(--card-border-static);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            background: var(--bg-nav);
-            margin-top: auto;
-        }
-
-        footer strong {
-            color: var(--text-main);
-        }
-
+        /* Mobile Phones */
         @media (max-width: 768px) {
-            #portfolio-grid { grid-template-columns: 1fr; }
-            h1.header-title { font-size: 2.5rem; }
-            .nav-links { display: none; }
+            nav { padding: 0 1.5rem; justify-content: space-between; }
+            .nav-links { display: none; } /* Hide dropdown on mobile to save space */
+            
+            header { margin: 3rem auto 1rem auto; }
+            h1.header-title { font-size: 2.2rem; }
+            header p { font-size: 1rem; }
+            
+            .categories-wrapper { margin: 2rem auto 3rem auto; padding: 0 1rem; }
+            .category-pill { font-size: 0.8rem; padding: 0.6rem 1rem; }
+            
+            .projects-header { font-size: 1.6rem; margin-bottom: 1.5rem; }
+            
+            #portfolio-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1rem; margin-bottom: 4rem; }
+            
+            /* Stack buttons vertically on small screens */
+            .card-actions { flex-direction: column; }
+            .btn { width: 100%; padding: 0.85rem; }
+        }
+
+        /* Small Mobile (iPhone SE) */
+        @media (max-width: 400px) {
+            nav { padding: 0 1rem; }
+            .nav-logo { font-size: 1.3rem; }
+            .social-links { gap: 0.75rem; }
+            .social-links svg { width: 22px; height: 22px; }
+            h1.header-title { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -487,6 +256,14 @@
         <p>A portfolio of domain-complete architectures, AI-integrated pipelines, and highly scalable distributed systems.</p>
     </header>
 
+    <div class="categories-wrapper">
+        <div class="categories-label">Explore Specialized Industry Domains</div>
+        <div class="categories-container" id="categories-container">
+            </div>
+    </div>
+
+    <h2 class="projects-header">All 21 Engineering Projects</h2>
+
     <main id="portfolio-grid">
         </main>
 
@@ -496,46 +273,70 @@
 
     <script>
         const projects = [
-            { id: "project/saas-boilerplate", title: "1. Multi-Tenant SaaS Boilerplate", tagline: "Production-ready SaaS starter with schema-level multi-tenancy, subscription billing, and team management.", headlineStack: ["Spring Boot", "Next.js", "PostgreSQL (Multi-Schema)", "Redis", "RabbitMQ"] },
-            { id: "project/banking-ledger", title: "2. Event Sourcing Banking Ledger", tagline: "A bank account simulation built on Event Sourcing and CQRS — every transaction is an immutable event.", headlineStack: ["Spring Boot", "Angular", "PostgreSQL", "RabbitMQ", "CQRS"] },
-            { id: "project/rate-limiter", title: "3. Distributed Rate Limiter", tagline: "Standalone rate limiting service with pluggable algorithms, tiered quotas, and a Spring Boot starter SDK.", headlineStack: ["Spring Boot", "React", "Redis", "Lua Scripting"] },
-            { id: "project/payment-gateway", title: "4. Payment Gateway Service", tagline: "Provider-agnostic payment abstraction with idempotency, webhook verification, and an append-only ledger.", headlineStack: ["Spring Boot", "Next.js", "Razorpay", "PayPal", "Redis"] },
-            { id: "project/collab-editor", title: "5. Real-Time Collaborative Document Editor", tagline: "Google Docs lite — multiple users edit simultaneously with conflict-free real-time sync via CRDTs.", headlineStack: ["Spring Boot", "React", "Yjs", "WebSocket"] },
-            { id: "project/tracing-platform", title: "6. Distributed Tracing Platform", tagline: "OpenTelemetry-compatible trace aggregator to visualise request flows across all microservices.", headlineStack: ["Spring Boot", "React", "D3.js", "OpenTelemetry", "PostgreSQL"] },
-            { id: "project/rag-pipeline", title: "7. RAG Pipeline as a Service", tagline: "Private knowledge base engine powered by vector search and Gemini with token streaming.", headlineStack: ["Spring Boot", "Next.js", "pgvector", "Google Gemini", "Spring AI"] },
-            { id: "project/ecommerce", title: "8. E-Commerce Platform", tagline: "Production-grade multi-vendor shopping platform with real-time inventory and a full checkout pipeline.", headlineStack: ["Spring Boot", "Next.js", "PostgreSQL", "Redis", "RabbitMQ"] },
-            { id: "project/llm-workflow", title: "9. LLM Workflow Automation Engine", tagline: "Visual drag-and-drop workflow builder using AI nodes for conditional routing and generation.", headlineStack: ["Spring Boot", "React", "React Flow", "Google Gemini", "RabbitMQ"] },
-            { id: "project/healthcare-app", title: "10. Healthcare Appointment System", tagline: "Doctor booking platform with HIPAA-aware audit logs and WebRTC video consultations.", headlineStack: ["Spring Boot", "Angular", "PostgreSQL", "WebRTC", "WebSocket"] },
-            { id: "project/job-board", title: "11. Job Board Platform", tagline: "Marketplace with advanced full-text search, skill matching, and Gemini-powered resume parsing.", headlineStack: ["Spring Boot", "React", "PostgreSQL", "Google Gemini", "Spring Batch"] },
-            { id: "project/iot-pipeline", title: "12. IoT Data Pipeline & Dashboard", tagline: "High-throughput sensor data ingestion via Kafka with real-time monitoring and alerting.", headlineStack: ["Spring Boot", "React", "Apache Kafka", "Spring Batch", "Recharts"] },
-            { id: "project/api-gateway", title: "13. API Gateway", tagline: "Reactive entry point handling JWT validation, Resilience4j circuit breakers, and Redis caching.", headlineStack: ["Spring Cloud Gateway", "WebFlux", "Resilience4j", "Redis"] },
-            { id: "project/feature-flag", title: "14. Feature Flag Service", tagline: "LaunchDarkly alternative managing live rollouts and A/B tests via Server-Sent Events.", headlineStack: ["Spring Boot", "React", "Redis", "SSE", "PostgreSQL"] },
-            { id: "project/auth-service", title: "15. Auth Service", tagline: "Standalone JWT authentication and authorisation service exposing a JWKS endpoint for validation.", headlineStack: ["Spring Boot", "Spring Security", "Redis", "JWT (RS256)", "Oracle DB"] },
-            { id: "project/auth-starter", title: "16. Auth Client Starter", tagline: "Spring Boot auto-configuration library that instantly protects endpoints by validating JWTs locally.", headlineStack: ["Spring Boot Starter", "JWT", "JWKS", "Auto-configuration"] },
-            { id: "project/notification-service", title: "17. Notification Service", tagline: "Unified asynchronous delivery across Email, SMS, and WebSockets from a single API call.", headlineStack: ["Spring Boot", "React", "RabbitMQ", "WebSocket", "Freemarker"] },
-            { id: "project/file-storage", title: "18. File Storage Service", tagline: "Unified object storage abstraction handling magic-byte validation, chunking, and pre-signed URLs.", headlineStack: ["Spring Boot", "Vue 3", "Oracle Object Storage", "Apache Tika", "Thumbnailator"] },
-            { id: "project/chaos-tool", title: "19. Chaos Engineering Tool", tagline: "Fault injection utility using the Docker API to simulate container deaths and network latency.", headlineStack: ["Spring Boot", "React", "Docker API", "Resilience4j"] },
-            { id: "project/finance-tracker", title: "20. FinTech Personal Finance Tracker", tagline: "Personal finance dashboard with time-series data storage and AI-powered categorisation.", headlineStack: ["Spring Boot", "Vue 3", "PostgreSQL", "Google Gemini", "Chart.js"] },
-            { id: "project/code-review", title: "21. AI Code Review Assistant", tagline: "GitHub App that listens to webhooks and automatically posts AI-generated inline review comments.", headlineStack: ["Spring Boot", "React", "Google Gemini", "GitHub Webhooks"] }
+            { id: "saas-boilerplate", title: "Multi-Tenant SaaS Boilerplate", tagline: "Production-ready SaaS starter with schema-level multi-tenancy, subscription billing, and team management.", headlineStack: ["Spring Boot", "Next.js", "PostgreSQL", "Redis", "RabbitMQ"] },
+            { id: "banking-ledger", title: "Event Sourcing Banking Ledger", tagline: "A bank account simulation built on Event Sourcing and CQRS — every transaction is an immutable event.", headlineStack: ["Spring Boot", "Angular", "PostgreSQL", "RabbitMQ", "CQRS"] },
+            { id: "rate-limiter", title: "Distributed Rate Limiter", tagline: "Standalone rate limiting service with pluggable algorithms, tiered quotas, and a Spring Boot starter SDK.", headlineStack: ["Spring Boot", "React", "Redis", "Lua Scripting"] },
+            { id: "payment-gateway", title: "Payment Gateway Service", tagline: "Provider-agnostic payment abstraction with idempotency, webhook verification, and an append-only ledger.", headlineStack: ["Spring Boot", "Next.js", "Razorpay", "PayPal", "Redis"] },
+            { id: "collab-editor", title: "Real-Time Collaborative Document Editor", tagline: "Google Docs lite — multiple users edit simultaneously with conflict-free real-time sync via CRDTs.", headlineStack: ["Spring Boot", "React", "Yjs", "WebSocket"] },
+            { id: "tracing-platform", title: "Distributed Tracing Platform", tagline: "OpenTelemetry-compatible trace aggregator to visualise request flows across all microservices.", headlineStack: ["Spring Boot", "React", "D3.js", "OpenTelemetry"] },
+            { id: "rag-pipeline", title: "RAG Pipeline as a Service", tagline: "Private knowledge base engine powered by vector search and Gemini with token streaming.", headlineStack: ["Spring Boot", "Next.js", "pgvector", "Google Gemini", "Spring AI"] },
+            { id: "ecommerce", title: "E-Commerce Platform", tagline: "Production-grade multi-vendor shopping platform with real-time inventory and a full checkout pipeline.", headlineStack: ["Spring Boot", "Next.js", "PostgreSQL", "Redis", "RabbitMQ"] },
+            { id: "llm-workflow", title: "LLM Workflow Automation Engine", tagline: "Visual drag-and-drop workflow builder using AI nodes for conditional routing and generation.", headlineStack: ["Spring Boot", "React", "React Flow", "Google Gemini"] },
+            { id: "healthcare-app", title: "Healthcare Appointment System", tagline: "Doctor booking platform with HIPAA-aware audit logs and WebRTC video consultations.", headlineStack: ["Spring Boot", "Angular", "PostgreSQL", "WebRTC", "WebSocket"] },
+            { id: "job-board", title: "Job Board Platform", tagline: "Marketplace with advanced full-text search, skill matching, and Gemini-powered resume parsing.", headlineStack: ["Spring Boot", "React", "PostgreSQL", "Google Gemini", "Spring Batch"] },
+            { id: "iot-pipeline", title: "IoT Data Pipeline & Dashboard", tagline: "High-throughput sensor data ingestion via Kafka with real-time monitoring and alerting.", headlineStack: ["Spring Boot", "React", "Apache Kafka", "Spring Batch"] },
+            { id: "api-gateway", title: "API Gateway", tagline: "Reactive entry point handling JWT validation, Resilience4j circuit breakers, and Redis caching.", headlineStack: ["Spring Cloud Gateway", "WebFlux", "Resilience4j", "Redis"] },
+            { id: "feature-flag", title: "Feature Flag Service", tagline: "LaunchDarkly alternative managing live rollouts and A/B tests via Server-Sent Events.", headlineStack: ["Spring Boot", "React", "Redis", "SSE", "PostgreSQL"] },
+            { id: "auth-service", title: "Auth Service", tagline: "Standalone JWT authentication and authorisation service exposing a JWKS endpoint for validation.", headlineStack: ["Spring Boot", "Spring Security", "Redis", "JWT (RS256)"] },
+            { id: "auth-starter", title: "Auth Client Starter", tagline: "Spring Boot auto-configuration library that instantly protects endpoints by validating JWTs locally.", headlineStack: ["Spring Boot Starter", "JWT", "JWKS", "Auto-configuration"] },
+            { id: "notification-service", title: "Notification Service", tagline: "Unified asynchronous delivery across Email, SMS, and WebSockets from a single API call.", headlineStack: ["Spring Boot", "React", "RabbitMQ", "WebSocket"] },
+            { id: "file-storage", title: "File Storage Service", tagline: "Unified object storage abstraction handling magic-byte validation, chunking, and pre-signed URLs.", headlineStack: ["Spring Boot", "Vue 3", "Oracle Object Storage", "Apache Tika"] },
+            { id: "chaos-tool", title: "Chaos Engineering Tool", tagline: "Fault injection utility using the Docker API to simulate container deaths and network latency.", headlineStack: ["Spring Boot", "React", "Docker API", "Resilience4j"] },
+            { id: "finance-tracker", title: "FinTech Personal Finance Tracker", tagline: "Personal finance dashboard with time-series data storage and AI-powered categorisation.", headlineStack: ["Spring Boot", "Vue 3", "PostgreSQL", "Google Gemini"] },
+            { id: "code-review", title: "AI Code Review Assistant", tagline: "GitHub App that listens to webhooks and automatically posts AI-generated inline review comments.", headlineStack: ["Spring Boot", "React", "Google Gemini", "GitHub Webhooks"] }
         ];
+
+        const categories = [
+            { id: "bfsi-quants", title: "Core BFSI & Capital Markets" },
+            { id: "payments-wealthtech", title: "Payments & WealthTech" },
+            { id: "ecommerce-retail", title: "High-Scale E-Commerce & D2C" },
+            { id: "mobility-food", title: "Mobility, Food & Hyper-Local" },
+            { id: "logistics-supplychain", title: "Logistics & Supply Chain" },
+            { id: "adtech-gaming", title: "AdTech, MarTech & Gaming" },
+            { id: "media-travel", title: "Media, Streaming & Travel" },
+            { id: "b2b-saas", title: "B2B SaaS & Enterprise Software" },
+            { id: "cloud-infra", title: "Cloud, Infra, Telecom & DevTools" },
+            { id: "cybersecurity", title: "Cybersecurity, SecOps & InsurTech" },
+            { id: "ai-data", title: "AI, Data Platforms & Analytics" },
+            { id: "healthtech", title: "HealthTech & Life Sciences" },
+            { id: "semiconductors-iot", title: "Semiconductors, IoT & Industrial Tech" },
+            { id: "cleantech-proptech", title: "CleanTech, SpaceTech & PropTech" },
+            { id: "govtech-hrtech", title: "GovTech, Public Infra & HRTech" }
+        ];
+
+        const catContainer = document.getElementById('categories-container');
+        categories.forEach(cat => {
+            const pill = document.createElement('a');
+            pill.href = `/category/${cat.id}`;
+            pill.className = 'category-pill';
+            pill.innerText = cat.title;
+            catContainer.appendChild(pill);
+        });
 
         const grid = document.getElementById('portfolio-grid');
         const dropdown = document.getElementById('nav-dropdown');
 
         projects.forEach(proj => {
-            // 1. Populate Navigation Dropdown
             const dropLink = document.createElement('a');
-            dropLink.href = `${proj.id}.html`;
+            dropLink.href = `/project/${proj.id}`;
             dropLink.className = 'dropdown-item';
             dropLink.innerText = proj.title;
             dropdown.appendChild(dropLink);
 
-            // 2. Build Card Badges 
             const badgesHTML = proj.headlineStack.map(tech => `<span class="badge" onclick="event.stopPropagation()">${tech}</span>`).join('');
             
-            // 3. Build Clickable Wrapped Card
-            const cardWrapper = document.createElement('a'); 
-            cardWrapper.href = `${proj.id}.html`;
+            const cardWrapper = document.createElement('div'); 
+            cardWrapper.setAttribute('onclick', `window.location.href='/project/${proj.id}'`);
             cardWrapper.className = 'card-wrapper';
             
             cardWrapper.innerHTML = `
@@ -559,14 +360,12 @@
             grid.appendChild(cardWrapper);
         });
 
-        // Universal Mouse Tracking Engine for Cards AND Header Title
         document.addEventListener("mousemove", e => {
             const targets = document.querySelectorAll(".card-wrapper, .header-title");
             targets.forEach(target => {
                 const rect = target.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
                 target.style.setProperty("--mouse-x", `${x}px`);
                 target.style.setProperty("--mouse-y", `${y}px`);
             });
