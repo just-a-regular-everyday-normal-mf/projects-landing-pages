@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-// Keep your exact same 'projects' array here
 const projects = [
     { id: "saas-boilerplate", title: "Multi-Tenant SaaS Boilerplate", tagline: "Production-ready SaaS starter with schema-level multi-tenancy, subscription billing, and team management.", headlineStack: ["Spring Boot", "Next.js", "PostgreSQL", "Redis", "RabbitMQ"] },
     { id: "banking-ledger", title: "Event Sourcing Banking Ledger", tagline: "A bank account simulation built on Event Sourcing and CQRS — every transaction is an immutable event.", headlineStack: ["Spring Boot", "Angular", "PostgreSQL", "RabbitMQ", "CQRS"] },
@@ -27,107 +26,29 @@ const projects = [
 ];
 
 const categories = [
-    {
-        id: "bfsi-quants",
-        title: "Core BFSI & Capital Markets",
-        desc: "Architectures optimized for strict ACID compliance, zero-downtime, and event-driven data ingestion.",
-        projectIds: ["banking-ledger", "payment-gateway", "rate-limiter", "chaos-tool", "api-gateway", "tracing-platform", "auth-service"]
-    },
-    {
-        id: "payments-wealthtech",
-        title: "Payments & WealthTech",
-        desc: "High-throughput transaction processing, secure ledger states, and idempotency logic.",
-        projectIds: ["payment-gateway", "finance-tracker", "banking-ledger", "rate-limiter", "auth-service", "api-gateway"]
-    },
-    {
-        id: "ecommerce-retail",
-        title: "High-Scale E-Commerce & D2C",
-        desc: "Distributed caching, catalog management, and surviving extreme traffic spikes during flash sales.",
-        projectIds: ["ecommerce", "rate-limiter", "notification-service", "payment-gateway", "file-storage", "feature-flag", "api-gateway", "auth-service"]
-    },
-    {
-        id: "mobility-food",
-        title: "Mobility, Food & Hyper-Local",
-        desc: "Real-time state tracking, WebSockets, dynamic API routing, and event streaming.",
-        projectIds: ["rate-limiter", "notification-service", "banking-ledger", "api-gateway", "llm-workflow", "tracing-platform", "auth-service"]
-    },
-    {
-        id: "logistics-supplychain",
-        title: "Logistics & Supply Chain",
-        desc: "Physical event streaming, pipeline observability, and automated workflow processing.",
-        projectIds: ["iot-pipeline", "tracing-platform", "banking-ledger", "notification-service", "llm-workflow", "api-gateway", "file-storage"]
-    },
-    {
-        id: "adtech-gaming",
-        title: "AdTech, MarTech & Gaming",
-        desc: "Sub-50ms latency implementations, feature toggles, and high-throughput real-time state management.",
-        projectIds: ["rate-limiter", "feature-flag", "collab-editor", "iot-pipeline", "chaos-tool", "tracing-platform"]
-    },
-    {
-        id: "media-travel",
-        title: "Media, Streaming & Travel",
-        desc: "Highly available booking engines, optimized binary file delivery, and global notifications.",
-        projectIds: ["file-storage", "healthcare-app", "feature-flag", "rate-limiter", "notification-service", "api-gateway"]
-    },
-    {
-        id: "b2b-saas",
-        title: "B2B SaaS & Enterprise Software",
-        desc: "Schema-level multi-tenancy, granular RBAC, robust integrations, and real-time collaboration.",
-        projectIds: ["saas-boilerplate", "feature-flag", "collab-editor", "auth-service", "llm-workflow", "notification-service", "api-gateway"]
-    },
-    {
-        id: "cloud-infra",
-        title: "Cloud, Infra, Telecom & DevTools",
-        desc: "Distributed systems reliability, custom SDKs, network resiliency, and microservice observability.",
-        projectIds: ["tracing-platform", "chaos-tool", "api-gateway", "auth-starter", "code-review", "rate-limiter"]
-    },
-    {
-        id: "cybersecurity",
-        title: "Cybersecurity, SecOps & InsurTech",
-        desc: "Zero-trust architectures, cryptographic algorithms, API protection, and strict audit logging.",
-        projectIds: ["auth-service", "healthcare-app", "rate-limiter", "auth-starter", "api-gateway", "feature-flag"]
-    },
-    {
-        id: "ai-data",
-        title: "AI, Data Platforms & Analytics",
-        desc: "Big data pipelines, RAG vector implementations, LLM workflow orchestration, and data ingestion.",
-        projectIds: ["rag-pipeline", "llm-workflow", "code-review", "job-board", "finance-tracker", "iot-pipeline"]
-    },
-    {
-        id: "healthtech",
-        title: "HealthTech & Life Sciences",
-        desc: "Strict privacy controls, encryption, secure medical file storage, and doctor-patient scheduling.",
-        projectIds: ["healthcare-app", "saas-boilerplate", "file-storage", "rag-pipeline", "auth-service", "notification-service"]
-    },
-    {
-        id: "semiconductors-iot",
-        title: "Semiconductors, IoT & Industrial Tech",
-        desc: "High-frequency telemetry ingestion, hardware edge monitoring, and simulating system faults.",
-        projectIds: ["iot-pipeline", "tracing-platform", "chaos-tool", "rate-limiter", "api-gateway"]
-    },
-    {
-        id: "cleantech-proptech",
-        title: "CleanTech, SpaceTech & PropTech",
-        desc: "Isolated property management contexts, energy grid telemetry, and peer-to-peer ledger systems.",
-        projectIds: ["saas-boilerplate", "iot-pipeline", "banking-ledger", "file-storage", "healthcare-app"]
-    },
-    {
-        id: "govtech-hrtech",
-        title: "GovTech, Public Infra & HRTech",
-        desc: "Population-scale concurrency, candidate matchmaking, document parsing, and mass communications.",
-        projectIds: ["job-board", "saas-boilerplate", "ecommerce", "notification-service", "collab-editor", "api-gateway", "auth-service"]
-    }
+    { id: "bfsi-quants", title: "Core BFSI & Capital Markets", desc: "Architectures optimized for strict ACID compliance, zero-downtime, and event-driven data ingestion.", projectIds: ["banking-ledger", "payment-gateway", "rate-limiter", "chaos-tool", "api-gateway", "tracing-platform", "auth-service"] },
+    { id: "payments-wealthtech", title: "Payments & WealthTech", desc: "High-throughput transaction processing, secure ledger states, and idempotency logic.", projectIds: ["payment-gateway", "finance-tracker", "banking-ledger", "rate-limiter", "auth-service", "api-gateway"] },
+    { id: "ecommerce-retail", title: "High-Scale E-Commerce & D2C", desc: "Distributed caching, catalog management, and surviving extreme traffic spikes during flash sales.", projectIds: ["ecommerce", "rate-limiter", "notification-service", "payment-gateway", "file-storage", "feature-flag", "api-gateway", "auth-service"] },
+    { id: "mobility-food", title: "Mobility, Food & Hyper-Local", desc: "Real-time state tracking, WebSockets, dynamic API routing, and event streaming.", projectIds: ["rate-limiter", "notification-service", "banking-ledger", "api-gateway", "llm-workflow", "tracing-platform", "auth-service"] },
+    { id: "logistics-supplychain", title: "Logistics & Supply Chain", desc: "Physical event streaming, pipeline observability, and automated workflow processing.", projectIds: ["iot-pipeline", "tracing-platform", "banking-ledger", "notification-service", "llm-workflow", "api-gateway", "file-storage"] },
+    { id: "adtech-gaming", title: "AdTech, MarTech & Gaming", desc: "Sub-50ms latency implementations, feature toggles, and high-throughput real-time state management.", projectIds: ["rate-limiter", "feature-flag", "collab-editor", "iot-pipeline", "chaos-tool", "tracing-platform"] },
+    { id: "media-travel", title: "Media, Streaming & Travel", desc: "Highly available booking engines, optimized binary file delivery, and global notifications.", projectIds: ["file-storage", "healthcare-app", "feature-flag", "rate-limiter", "notification-service", "api-gateway"] },
+    { id: "b2b-saas", title: "B2B SaaS & Enterprise Software", desc: "Schema-level multi-tenancy, granular RBAC, robust integrations, and real-time collaboration.", projectIds: ["saas-boilerplate", "feature-flag", "collab-editor", "auth-service", "llm-workflow", "notification-service", "api-gateway"] },
+    { id: "cloud-infra", title: "Cloud, Infra, Telecom & DevTools", desc: "Distributed systems reliability, custom SDKs, network resiliency, and microservice observability.", projectIds: ["tracing-platform", "chaos-tool", "api-gateway", "auth-starter", "code-review", "rate-limiter"] },
+    { id: "cybersecurity", title: "Cybersecurity, SecOps & InsurTech", desc: "Zero-trust architectures, cryptographic algorithms, API protection, and strict audit logging.", projectIds: ["auth-service", "healthcare-app", "rate-limiter", "auth-starter", "api-gateway", "feature-flag"] },
+    { id: "ai-data", title: "AI, Data Platforms & Analytics", desc: "Big data pipelines, RAG vector implementations, LLM workflow orchestration, and data ingestion.", projectIds: ["rag-pipeline", "llm-workflow", "code-review", "job-board", "finance-tracker", "iot-pipeline"] },
+    { id: "healthtech", title: "HealthTech & Life Sciences", desc: "Strict privacy controls, encryption, secure medical file storage, and doctor-patient scheduling.", projectIds: ["healthcare-app", "saas-boilerplate", "file-storage", "rag-pipeline", "auth-service", "notification-service"] },
+    { id: "semiconductors-iot", title: "Semiconductors, IoT & Industrial Tech", desc: "High-frequency telemetry ingestion, hardware edge monitoring, and simulating system faults.", projectIds: ["iot-pipeline", "tracing-platform", "chaos-tool", "rate-limiter", "api-gateway"] },
+    { id: "cleantech-proptech", title: "CleanTech, SpaceTech & PropTech", desc: "Isolated property management contexts, energy grid telemetry, and peer-to-peer ledger systems.", projectIds: ["saas-boilerplate", "iot-pipeline", "banking-ledger", "file-storage", "healthcare-app"] },
+    { id: "govtech-hrtech", title: "GovTech, Public Infra & HRTech", desc: "Population-scale concurrency, candidate matchmaking, document parsing, and mass communications.", projectIds: ["job-board", "saas-boilerplate", "ecommerce", "notification-service", "collab-editor", "api-gateway", "auth-service"] }
 ];
 
-// Target directory paths relative to the template folder
 const categoryDir = path.join(__dirname, '../category');
 
-// Ensure /category folder exists
 if (!fs.existsSync(categoryDir)){
     fs.mkdirSync(categoryDir, { recursive: true });
 }
 
-// Read template file from the current directory
 const templateHTMLPath = path.join(__dirname, 'category-template.html');
 const templateHTML = fs.readFileSync(templateHTMLPath, 'utf8');
 
@@ -140,7 +61,6 @@ categories.forEach(cat => {
 
         const badgesHTML = proj.headlineStack.map(tech => `<span class="badge" onclick="event.stopPropagation()">${tech}</span>`).join('');
 
-        // Issue 2 & 3 Fixed: Clean absolute path routing, Div wrapper, onclick handler
         projectCardsHTML += `
             <div onclick="window.location.href='/project/${proj.id}'" class="card-wrapper">
                 <div class="card-content">

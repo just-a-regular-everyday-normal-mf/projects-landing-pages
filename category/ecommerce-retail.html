@@ -13,13 +13,10 @@
             --card-base: rgba(30, 41, 59, 0.5);
             --card-border-static: rgba(148, 163, 184, 0.2);
             --card-inner: #0f172a;
-            
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            
             --vibrant-cyan: #00E5FF;
             --vibrant-violet: #B000FF;
-            
             --border-radius: 16px;
         }
 
@@ -37,7 +34,6 @@
             flex-direction: column;
         }
 
-        /* --- Navigation Bar --- */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -97,7 +93,6 @@
         .social-links a:hover { color: var(--vibrant-violet); transform: translateY(-2px) scale(1.1); }
         .social-links svg { width: 26px; height: 26px; fill: currentColor; }
 
-        /* --- Header / Title --- */
         header {
             max-width: 1000px;
             margin: 4rem auto 3rem auto;
@@ -143,7 +138,6 @@
             margin-bottom: 2.5rem;
         }
 
-        /* Portfolio Push Button */
         .portfolio-push {
             display: inline-flex;
             align-items: center;
@@ -167,16 +161,7 @@
             transform: scale(1.05);
         }
 
-        /* --- Portfolio Grid --- */
-        #portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto 6rem auto;
-            padding: 0 2rem;
-            flex-grow: 1;
-        }
+        #portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto 6rem auto; padding: 0 2rem; flex-grow: 1; }
 
         .card-wrapper {
             background: var(--card-border-static);
@@ -191,82 +176,26 @@
         }
 
         .card-wrapper:hover { transform: translateY(-6px); z-index: 10; }
-
-        .card-wrapper::before {
-            content: "";
-            position: absolute;
-            left: 0; top: 0; width: 100%; height: 100%;
-            border-radius: inherit;
-            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), var(--vibrant-cyan), var(--vibrant-violet) 50%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 1;
-        }
-
+        .card-wrapper::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: inherit; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), var(--vibrant-cyan), var(--vibrant-violet) 50%, transparent 70%); opacity: 0; transition: opacity 0.5s ease; z-index: 1; }
         .card-wrapper:hover::before { opacity: 1; }
 
-        .card-content {
-            background: var(--card-inner);
-            border-radius: calc(var(--border-radius) - 1px);
-            position: relative;
-            z-index: 2;
-            padding: 2rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .card-inner-glow {
-            position: absolute;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(0, 229, 255, 0.08), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 3;
-            pointer-events: none;
-        }
-
+        .card-content { background: var(--card-inner); border-radius: calc(var(--border-radius) - 1px); position: relative; z-index: 2; padding: 2rem; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+        .card-inner-glow { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(0, 229, 255, 0.08), transparent 60%); opacity: 0; transition: opacity 0.5s ease; z-index: 3; pointer-events: none; }
         .card-wrapper:hover .card-inner-glow { opacity: 1; }
-
         .card-content-layer { position: relative; z-index: 4; display: flex; flex-direction: column; height: 100%; }
 
         .card-title { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; line-height: 1.3; }
         .card-tagline { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; flex-grow: 1; }
-
         .headline-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
 
-        .badge {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #cbd5e1;
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
+        .badge { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); color: #cbd5e1; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; transition: all 0.2s ease; position: relative; }
         .card-wrapper:hover .badge { border-color: rgba(0, 229, 255, 0.3); color: #fff; background: rgba(0, 229, 255, 0.05); }
-
-        .badge:hover {
-            background: rgba(0, 229, 255, 0.5) !important;
-            color: #fff !important;
-            border-color: var(--vibrant-cyan) !important;
-            box-shadow: 0 0 12px rgba(0, 229, 255, 0.4), 0 0 25px rgba(0, 229, 255, 0.2) !important;
-            transform: translateY(-2px);
-            z-index: 5;
-        }
+        .badge:hover { background: rgba(0, 229, 255, 0.5) !important; color: #fff !important; border-color: var(--vibrant-cyan) !important; box-shadow: 0 0 12px rgba(0, 229, 255, 0.4), 0 0 25px rgba(0, 229, 255, 0.2) !important; transform: translateY(-2px); z-index: 5; }
 
         .card-actions { display: flex; gap: 1rem; margin-top: auto; position: relative; z-index: 5; }
-
         .btn { flex: 1; text-align: center; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
-
         .btn-primary { background: rgba(0, 229, 255, 0.1); color: var(--vibrant-cyan); border: 1px solid rgba(0, 229, 255, 0.3); }
         .btn-primary:hover { background: var(--vibrant-cyan); color: #000; border-color: var(--vibrant-cyan); box-shadow: 0 0 25px rgba(0, 229, 255, 0.8), 0 0 50px rgba(0, 229, 255, 0.4); transform: scale(1.05); }
-
         .btn-secondary { background: rgba(176, 0, 255, 0.1); color: #d8b4fe; border: 1px solid rgba(176, 0, 255, 0.3); }
         .btn-secondary:hover { background: var(--vibrant-violet); color: #fff; border-color: var(--vibrant-violet); box-shadow: 0 0 25px rgba(176, 0, 255, 0.8), 0 0 50px rgba(176, 0, 255, 0.4); transform: scale(1.05); }
 
@@ -283,7 +212,7 @@
             <span class="bracket">&lt;</span>GA <span class="bracket">/&gt;</span>
         </a>
         <div class="nav-center">
-            <a href="index.html" class="nav-back">Visit All Projects</a>
+            <a href="/" class="nav-back">Visit All Projects</a>
         </div>
         <div class="social-links">
             <a href="https://gauravamarnani.in" target="_blank" title="Portfolio">
@@ -303,7 +232,7 @@
         <p class="tagline">Distributed caching, catalog management, and surviving extreme traffic spikes during flash sales.</p>
         
         <div>
-            <a href="index.html" class="portfolio-push">
+            <a href="/" class="portfolio-push">
                 Explore the Full Portfolio (21 Projects) &rarr;
             </a>
         </div>
